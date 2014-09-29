@@ -1,5 +1,9 @@
 #!/usr/bin/perl -w
 
+# quick note here, this performs VERY BADLY when trying to /atg on multiple windows at the same time
+# (eventual [(status)] Segmentation fault )
+# this can be fixed by dynamically creating new thread objects instead of fuckfacing the same $thr over and over
+
 use strict;
 use warnings;
 use Irssi;
