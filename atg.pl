@@ -9,13 +9,13 @@ use threads;
 $NAME = 'atg sucks';
 $VERSION = "0.01";
 %IRSSI = (
-	name            => $NAME,
-	version         => $VERSION,
-	author          => 'box2',
-	contact         => 'irc',
-	download        => 'tba',
-	description     => 'la di freakin da',
-	license         => 'nouveau BSD',
+  name            => $NAME,
+  version         => $VERSION,
+  author          => 'box2',
+  contact         => 'irc',
+  download        => 'tba',
+  description     => 'la di freakin da',
+  license         => 'nouveau BSD',
 );
 
 # to add later, a list of things to randomly pick from
@@ -23,19 +23,19 @@ my $msg = "atg";
 my $thr;
 
 sub cmd_atg {
-	# data    - user input after /cmd
-	# server  - the active server window
-	# witem   - the active window item (eg. channel, query)
-	#	          (or undef if the window is empty)
-	my ($data, $server, $witem) = @_;
+  # data    - user input after /cmd
+  # server  - the active server window
+  # witem   - the active window item (eg. channel, query)
+  #            (or undef if the window is empty)
+  my ($data, $server, $witem) = @_;
 
-	if (!$server || !$server->{connected}) {
-		Irssi::print("Not connected to server");
-		return;
-	}
+  if (!$server || !$server->{connected}) {
+    Irssi::print("Not connected to server");
+    return;
+  }
 
-	# We have an active chat window
-	if ($witem && ($witem->{type} eq "CHANNEL" || $witem->{type} eq "QUERY")) {
+  # We have an active chat window
+  if ($witem && ($witem->{type} eq "CHANNEL" || $witem->{type} eq "QUERY")) {
     # start the spam thread
     $thr = threads->create(sub {
       # Thread 'cancellation' signal handler
@@ -52,9 +52,9 @@ sub cmd_atg {
         }
       }
     });
-	} else {
-		Irssi::print("Usage: be looking at the channel you want to spam then: /atg");
-	}
+  } else {
+    Irssi::print("Usage: be looking at the channel you want to spam then: /atg");
+  }
 }
 
 sub cmd_disable_atg {
